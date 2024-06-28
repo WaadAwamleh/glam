@@ -1,5 +1,5 @@
 {
-    "name_exp": "experiment_2",
+    "name_exp": "experiment_3",
     "write_dir": "logs",
     "dataset": "/Users/danaawamleh/Desktop/JKU/Practical/FIRE/Images",
     "n_jobs": 6,
@@ -8,7 +8,7 @@
     "pretrained_weights": "./checkpoints",
     "learning_rate": 0.001, 
     "weight_decay": 0,
-    "epochs": 25,
+    "epochs": 15,
     "nms0": 5,
     "nms": 10,
     "compute_metrics": true,

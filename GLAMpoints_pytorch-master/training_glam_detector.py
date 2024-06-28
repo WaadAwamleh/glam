@@ -52,7 +52,7 @@ def main(con: dict, args) -> None:
     val_dataset = SyntheticDataset(Path(dataset) , train=False)
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
-    model = UNet(attention=False)
+    model = UNet(attention=True)
     optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),lr=lr,weight_decay=weight_decay)
     save_path = Path(con['write_dir']) / con['name_exp']
     if con["load_pretrained_weights"]:
