@@ -1,5 +1,5 @@
 {
-    "name_exp": "experiment_1",
+    "name_exp": "experiment_2",
     "write_dir": "logs",
     "dataset": "/Users/danaawamleh/Desktop/JKU/Practical/FIRE/Images",
     "n_jobs": 6,
