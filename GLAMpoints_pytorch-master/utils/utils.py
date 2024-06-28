@@ -17,7 +17,7 @@ def plot_losses(train_losses, val_losses):
     plt.ylabel('Loss')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/Users/danaawamleh/Desktop/JKU/Practical/training_validation_loss.png')
+    plt.savefig('/system/user/studentwork/hludwig/glam/GLAMpoints_pytorch-master/training_validation_loss.png')
     plt.show()
 
 def plot_training(image1, image2, kp_map1, kp_map2, computed_reward1, loss, mask_batch1, metrics_per_image,

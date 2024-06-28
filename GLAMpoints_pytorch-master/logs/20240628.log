@@ -1,0 +1,5 @@
+2024-06-28 01:42:55,676 - logger - INFO - cumulative_ratio_correct_homographies_per_iter, 1.0, 0
+2024-06-28 01:42:55,678 - logger - INFO - cumulative_ratio_acceptable_homographies_per_iter 0.5, 0
+2024-06-28 01:42:55,678 - logger - INFO - cumulative_average_number_of_kp_per_iter 4158.5, 0
+2024-06-28 01:42:55,678 - logger - INFO - cumulative_average_number_of_tp_per_iter 1877.0, 0
+2024-06-28 01:42:55,678 - logger - INFO - cumulative_repeatability_per_iter, 1.2919734020459614, 0

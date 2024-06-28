@@ -66,7 +66,8 @@ class SyntheticDataset(Dataset):
     def __init__(self, dir, train=True):
         self.training = train
         self.root_dir = Path(dir)  
-        self.list_original_images = [f for f in self.root_dir.rglob('*/*_1.jpg')] #*healthy/
+        self.list_original_images = [f for f in self.root_dir.rglob('*/*.jpg')] #*healthy/
+        print(len(self.list_original_images))
         if train:
             self.list_original_images = self.list_original_images[:int(0.8 * len(self.list_original_images))]
         else:

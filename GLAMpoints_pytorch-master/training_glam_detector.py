@@ -18,8 +18,8 @@ from utils.utils import check_and_reshape, plot_losses, plot_training
 from utils.loss import compute_reward, compute_loss
 from utils.logger import LoggerUtility
 from utils.checkpoint_manager import get_most_recent_checkpoint,load_checkpoint, save_checkpoint
-#from utils.unet import UNet
-from utils.glam import UNet
+from utils.unet import UNet
+#from utils.glam import UNet
 
 
 
@@ -52,7 +52,7 @@ def main(con: dict, args) -> None:
     val_dataset = SyntheticDataset(Path(dataset) , train=False)
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
-    model = UNet()
+    model = UNet(attention=True)
     optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),lr=lr,weight_decay=weight_decay)
     save_path = Path(con['write_dir']) / con['name_exp']
     if con["load_pretrained_weights"]:
@@ -239,5 +239,4 @@ if __name__ == '__main__':
         config = json.load(config_file)
     if args.data_path:
         config['dataset'] = args.data_path
-    mp.set_start_method('spawn')  # or 'fork' if you are on a Unix-like system
     main(config, args)
