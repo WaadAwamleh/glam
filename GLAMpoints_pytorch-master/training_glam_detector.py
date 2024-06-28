@@ -52,7 +52,7 @@ def main(con: dict, args) -> None:
     val_dataset = SyntheticDataset(Path(dataset) , train=False)
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=n_jobs)
-    model = UNet(attention=True)
+    model = UNet(attention=False)
     optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),lr=lr,weight_decay=weight_decay)
     save_path = Path(con['write_dir']) / con['name_exp']
     if con["load_pretrained_weights"]:
@@ -132,7 +132,7 @@ def main(con: dict, args) -> None:
             Loss = compute_loss(reward=computed_reward1, kpmap=kp_map1, mask=mask_batch1)
             Loss.backward()
             optimizer.step()
-            train_losses.append(Loss.item())
+            
             if i % con["plot_every_x_batches"] == 0 and verbose:
                 plot_training(image1.cpu().numpy().squeeze(1), image2.cpu().numpy().squeeze(1),
                             kp_map1.detach().cpu().numpy().squeeze(1), kp_map2.detach().cpu().numpy().squeeze(1),
@@ -145,7 +145,7 @@ def main(con: dict, args) -> None:
             pbar.set_description('training: R_total_loss: %.3f/%.3f' % (running_train_loss / (i + 1),Loss.item()))
             
         running_train_loss /= len(train_dataloader)
-        
+        train_losses.append(running_train_loss)
         logger.info('train loss', running_train_loss, epoch)
         print(colored('==> ', 'green') + 'Train average loss:', running_train_loss)
         if con['validation']:
@@ -191,7 +191,7 @@ def main(con: dict, args) -> None:
                         logger.info(f'cumulative_average_number_of_tp_per_iter, {float(nbr_tp)/nbr_images}, {n_iter}')
                         logger.info(f'cumulative_repeatability_per_iter, {float(add_repeatability)/nbr_images}, {n_iter}')
                     Loss = compute_loss(reward=computed_reward1, kpmap=kp_map1, mask=mask_batch1)
-                    val_losses.append(Loss.item())
+                    
                     if i < 2 and verbose:
                         plot_training(image1.cpu().numpy().squeeze(), image2.cpu().numpy().squeeze(),
                                     kp_map1.cpu().numpy().squeeze(), kp_map2.cpu().numpy().squeeze(),
@@ -213,6 +213,7 @@ def main(con: dict, args) -> None:
                     logger.info('average_number_of_tp_per_epoch', float(nbr_tp) / nbr_images, epoch)
                     logger.info('repeatability_per_epoch', float(add_repeatability) / nbr_images, epoch)
             val_loss =  running_valid_loss / len(val_dataloader)
+            val_losses.append(val_loss)
             print(colored('==> ', 'blue') + 'Val average grid loss :', val_loss)
             print(colored('==> ', 'blue') + 'epoch :', epoch + 1)
             logger.info('val loss', val_loss, epoch)
