@@ -13,8 +13,21 @@ GLAMpoints is an innovative approach to feature detection and image registration
 
 To set up GLAMpoints on your system, follow these instructions:
 
+
+- clone the repository onto your local directory.
+- set up your environment with conda.
+- install all the requirements.
+
 ```python
-git clone https://github.com/yourusername/glampoints.git
-cd glampoints
+
+git clone https://github.com/yourusername/glampoints.git](https://github.com/WaadAwamleh/glam.git
+cd glam
+conda create --name glam python=3.9 
+conda activate glam
 pip install -r requirements.txt
+```
+You are now able to start your model training by executing this line in glam:
+
+```python
+python training_glam_detector.py --data_path /path/to/data/folder
 ```
