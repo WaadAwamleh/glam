@@ -1,0 +1,21 @@
+{
+    "name_exp": "experiment_leaves",
+    "write_dir": "logs",
+    "dataset": "/Users/danaawamleh/Desktop/leaves/",
+    "n_jobs": 6,
+    "batch_size": 25,
+    "load_pretrained_weights": false,
+    "pretrained_weights": "./checkpoints",
+    "learning_rate": 0.001, 
+    "weight_decay": 0,
+    "epochs": 15,
+    "nms0": 5,
+    "nms": 10,
+    "compute_metrics": true,
+    "validation": true,
+    "validation_every": 5,
+    "distance_threshold": 5,
+    "plot_every_x_batches": true
+
+
+}
