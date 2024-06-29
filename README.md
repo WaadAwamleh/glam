@@ -20,7 +20,7 @@ To set up GLAMpoints on your system, follow these instructions:
 
 ```python
 
-git clone https://github.com/yourusername/glampoints.git](https://github.com/WaadAwamleh/glam.git
+git clone https://github.com/WaadAwamleh/glam.git
 cd glam
 conda create --name glam python=3.9 
 conda activate glam
