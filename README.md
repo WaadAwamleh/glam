@@ -31,3 +31,12 @@ You are now able to start your model training by executing this line in glam:
 ```python
 python training_glam_detector.py --data_path /path/to/data/folder
 ```
+
+Citing the GLAMpoints paper and their repository:
+https://arxiv.org/pdf/1908.06812
+https://gitlab.com/retinai_sandro/glampoints
+Copyright (2019), RetinAI Medical AG.
+This software for the training and application of Greedily Learned Matching keypoints is being made available for individual research use only. For any commercial use contact RetinAI Medical AG.
+For further details on obtaining a commercial license, contact RetinAI Medical AG Office (sales@retinai.com).
+RETINAI MEDICAL AG MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND CONCERNING THIS SOFTWARE.
+This license file must be retained with all copies of the software, including any modified or derivative versions.
